@@ -16,3 +16,16 @@
 //     res.write("hello world")
 //     res.end()
 // }).listen(2500)
+
+// much more advanced, means the server needs to return the response as webpage rather than simple text, so now that is going to achieve.
+
+var http = require('http')
+var fs = require('fs')
+
+http.createServer((req,res) => {
+    fs.readFile('reg.html',(err,data) => {
+        res.writeHead(200,{'content-type':'text/html'})
+        res.write(data)
+        res.end()
+    })
+}).listen(2700)
