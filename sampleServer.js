@@ -33,21 +33,28 @@
 //Routing to different pages according to the request from the clients
 var http = require('http')
 var fs = require('fs')
+var url=require('url')
 
 http.createServer((req,res) => {
-    if (req.url === '/') {
+    var q = url.parse(req.url)
+
+    if (q.pathname === '/') {
         fs.readFile('login.html', (err,data) => {
             res.writeHead(200,{'content-type':'text/html'})
             res.write(data)
             res.end()
         })
-    } else if (req.url === '/signup') {
+    } else if (q.pathname === '/signup') {
         fs.readFile('reg.html',(err,data) => {
             res.writeHead(200,{'content-type':'text/html'})
             res.write(data)
             res.end()
         })
-    } else {
+    } else if (q.pathname === '/signup_form') {
+        console.log(q.query)
+        res.end()
+    }
+     else {
         res.write('error')
         res.end()
     }
