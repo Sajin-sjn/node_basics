@@ -36,7 +36,7 @@ var fs = require('fs')
 var url=require('url')
 
 http.createServer((req,res) => {
-    var q = url.parse(req.url)
+    var q = url.parse(req.url,true)
 
     if (q.pathname === '/') {
         fs.readFile('login.html', (err,data) => {
@@ -52,6 +52,7 @@ http.createServer((req,res) => {
         })
     } else if (q.pathname === '/signup_form') {
         console.log(q.query)
+        console.log(q.query.place)
         res.end()
     }
      else {
