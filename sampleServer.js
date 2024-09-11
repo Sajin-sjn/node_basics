@@ -51,8 +51,10 @@ http.createServer((req,res) => {
             res.end()
         })
     } else if (q.pathname === '/signup_form') {
-        console.log(q.query)
-        console.log(q.query.place)
+        // console.log(q.query)
+        // console.log(q.query.place)
+        // res.end()
+        res.write('<h1>'+q.query.name+'</h1>')
         res.end()
     }
      else {
