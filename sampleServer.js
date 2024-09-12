@@ -58,7 +58,7 @@ http.createServer((req,res) => {
         res.end()
     }
      else {
-        res.write('error')
+        res.write('error') 
         res.end()
     }
 }).listen(8000,() => console.log("server running..."))
