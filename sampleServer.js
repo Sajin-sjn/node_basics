@@ -1,10 +1,14 @@
-// down to basics, to create a node server also to display a string
-// var http = require('http');
+// //create a node server also to display a text
+// const http = require('http');
 
-// http.createServer((req,res) => {
+// const server = http.createServer((req,res) => {
 //     res.write('helllo world')
 //     res.end()
-// }).listen(8800)
+// })
+
+// const PORT=process.env.PORT||3001;
+
+// server.listen(PORT,()=>console.log("server running.."))
 
 
 // advanced version that is over the top by including the status code.
@@ -19,18 +23,18 @@
 
 // much more advanced, means the server needs to return the response as webpage rather than simple text, so now that is going to achieve.
 
-// var http = require('http')
-// var fs = require('fs')
+var http = require('http')
+var fs = require('fs')
 
-// http.createServer((req,res) => {
-//     fs.readFile('reg.html',(err,data) => {
-//         res.writeHead(200,{'content-type':'text/html'})
-//         res.write(data)
-//         res.end()
-//     })
-// }).listen(2700)
+http.createServer((req,res) => {
+    fs.readFile('reg.html',(err,data) => {
+        res.writeHead(200,{'content-type':'text/html'})
+        res.write(data)
+        res.end()
+    })
+}).listen(2700)
 
-//Routing to different pages according to the request from the clients
+// Routing to different pages according to the request from the clients
 var http = require('http')
 var fs = require('fs')
 var url=require('url')
@@ -44,21 +48,21 @@ http.createServer((req,res) => {
             res.write(data)
             res.end()
         })
-    } else if (q.pathname === '/signup') {
-        fs.readFile('reg.html',(err,data) => {
-            res.writeHead(200,{'content-type':'text/html'})
-            res.write(data)
-            res.end()
-        })
-    } else if (q.pathname === '/signup_form') {
-        // console.log(q.query)
-        // console.log(q.query.place)
-        // res.end()
-        res.write('<h1>'+q.query.name+'</h1>')
-        res.end()
-    }
-     else {
-        res.write('error') 
-        res.end()
-    }
-}).listen(8000,() => console.log("server running..."))
+//     } else if (q.pathname === '/signup') {
+//         fs.readFile('reg.html',(err,data) => {
+//             res.writeHead(200,{'content-type':'text/html'})
+//             res.write(data)
+//             res.end()
+//         })
+//     } else if (q.pathname === '/signup_form') {
+//         // console.log(q.query)
+//         // console.log(q.query.place)
+//         // res.end()
+//         res.write('<h1>'+q.query.name+'</h1>')
+//         res.end()
+//     }
+//      else {
+//         res.write('error') 
+//         res.end()
+//     }
+// }).listen(8000,() => console.log("server running..."))
